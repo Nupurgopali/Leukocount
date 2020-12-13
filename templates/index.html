@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='/style/style.css') }}">
+     <link rel="icon" href= "{{ url_for('static',filename='/logo/favicon-32x32.png') }}"  type="image/gif" >
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <title>LEUKOCOUNT</title>
+</head>
+<body>
+<br>
+
+    <h1 class="h1">LEUKOCOUNT</h1>
+    
+    <div class="w3-bar navbar">
+   
+  <a href="#about" class="w3-bar-item w3-button w3-mobile">ABOUT</a>
+  <a href="#demo" class="w3-bar-item w3-button w3-mobile">DEMO</a>
+  <a href="#work" class="w3-bar-item w3-button w3-mobile">HOW IT WORKS</a>
+
+</div>
+<br>
+<br>
+<br>
+</div>
+<a name="about"></a>
+<div>
+<h2 class="h1">ABOUT</h2>
+<p class="para"> LEUKOCOUNT aids in automating the process of detecting and counting different
+types of WBC's in a blood smear.White blood cell (WBC) count is a valuable metric 
+for assisting with diagnosis or prognosis of various diseases such as coronary heart disease,
+ type 2 diabetes, or infection. In the current pandemic situation, with number of
+patients increasing exponentially each day. It is difficult to manually count and keep
+track of their white blood cells.It is crucial to maintain ideal count of white blood cells,
+drastic decrease in the number of WBC's leads to higher risk of getting an infection and an 
+abnormal increase in the number could indicated diseases such as bone-marrow, cancer, etc.</p>
+<p class="para">Apart from this a WBC count can detect hidden infections within your body and alert doctors 
+to undiagnosed medical conditions, such as autoimmune diseases, immune deficiencies, 
+and blood disorders. This test also helps doctors monitor the effectiveness of 
+chemotherapy or radiation treatment in people with cancer.</p>
+<p class="para"> Recent studies have revealed that raised white blood cell and 
+neutrophil counts along with a fall in lymphocyte count are seen in some patients 
+with COVID-19. Other studies have shown that determining the neutrophil-to-lymphocyte 
+ratio could serve as a biomarker that could predict the infection's outcome.</p>
+<p class="para">wbCOUNT using deep learning techniques to detect four different
+types of WBC's :
+<p class="para">
+<li class="para">'EOSINOPHIL'</li>
+<li class="para">'LYMPHOCYTE'</li>
+<li class="para">'MONOCYTE'</li>
+<li class="para">'NEUTROPHIL'</li>
+</p>
+<p class="para">and counts each type of WBC's
+present in the sample.It attempts in making the entire process of detecting and counting number 
+of WBC's efficient, effortless, cheap and timing-saving.</p></p>
+</div>
+<br>
+<br>
+<a name="demo"></a>
+<div>
+<h2 class="h1"  href="demo">DEMO</h2>
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_cellimage') }}">
+        <div class="file-upload">
+  
+
+  <div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' name="file"  onchange="readURL(this);" accept="image/*" multiple />
+    <div class="drag-text">
+      <h3>Drag and drop your samples!</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#"/>
+    <div class="image-title-wrap">
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+  </div>
+</div>
+<div class="upload-btn-wrapper">
+	
+	<input type="submit"  class="btn" value="Upload!">
+  </div>
+        
+      </form>
+    <br>
+    <br>
+    <br>
+    <!--<img id="graphs" class="center" src="{{url}}"/>-->
+
+<br>
+<br>
+<h4 class="h1">{{title}}</h2>
+<div class="chart" id="bargraph">
+    <script>
+        var graphs = {{plot | safe}};
+        Plotly.plot('bargraph',graphs,{});
+    </script>
+</div>
+<h2 class="h1">REPORT</h2>
+<h3 class="h1">NAME:{{username}}</h3>
+<h3 class="h1">AGE:{{age}}</h3>
+<h3 class="h1">GENDER:{{gender}}</h3>
+<br>
+<h3 class="h1"><b>{{result}}</b></h3>
+
+<!--<button class="btn_download"><i class="fa fa-download"></i> <a href="{{url}}" name="download" download>DOWNLOAD</a></button>-->
+
+</div>
+<br>
+<br>
+<br>
+<a name="work"></a>
+<div>
+<h2 class="h1">HOW IT WORKS</h2>
+<p class="para">There are numerous methods and principles to manually count WBCs such as the TLC method,etc.
+It usually takes few days to weeks time to detect and count different types of WBC's in a sample.
+It even requires expensive medical instruments to manually count different types of WBC'c.</p>
+<p class="para"> Here's where LEUKOCOUNT helps as it makes the entire process cheaper( since no medical tools
+are required) and faster. It instantly provides result on a large scale of blood samples, saving
+hospital's/clinic's time and expense.</p>
+<p class="para"> LEUKOCOUNT takes the blood samples snapshots as input and uses image processing techinques
+to count different types of WBC's and then provides a graph indicate number of different 
+types of WBC's present in the blood sample.</p>
+</div>
+<br>
+<br>
+<br>
+<p class="para">© 2020 LEUKOCOUNT</p>
+</body>
+ <script  src= "{{ url_for('static',filename='/js/script.js') }}"></script>
+
+</html>
