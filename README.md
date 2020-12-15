@@ -1,5 +1,5 @@
 # MOTIVATION BEHIND LEUKOCOUNT
-LEUKOCOUNT aids in automating the process of detecting and counting different types of WBC's in a blood smear.White blood cell (WBC) count is a valuable metric for assisting with 
+LEUKOCOUNT aids in automating the process of detection of blood-based diseases. White blood cell (WBC) count is a valuable metric for assisting with 
 diagnosis or prognosis of various diseases such as coronary heart disease, type 2 diabetes, or infection. In the current pandemic situation, with number of patients increasing 
 exponentially each day. It is difficult to manually count and keep track of their white blood cells.
 
